@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG="/root/rtl_tcp_service.log"
+LOG="/iss_recorder/rtl_tcp_service.log"
 BIN="/usr/bin/rtl_tcp"
 
 start() {

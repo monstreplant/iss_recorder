@@ -1,5 +1,5 @@
 #!/bin/bash
-ROOTDIR="/root/scripts"
+ROOTDIR="/root/iss_recorder"
 LOG="$ROOTDIR/iss_recorder.log"
 #curl "http://api.open-notify.org/iss-pass.json?lat=43.598039&lon=6.986027&n=1"
 if [ ! -f $ROOTDIR/iss_recorder.lock ]; then

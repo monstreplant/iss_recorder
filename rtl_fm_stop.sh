@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROOTDIR="/root/scripts"
+ROOTDIR="/iss_recorder/scripts"
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG="$ROOTDIR/iss_recorder.log"
 
