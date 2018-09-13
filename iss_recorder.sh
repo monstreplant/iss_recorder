@@ -26,7 +26,7 @@ if [ ! -f $ROOTDIR/iss_recorder.lock ]; then
 	at $STOP -f $ROOTDIR/rtl_fm_stop.sh >> $LOG
 
 else
-	echo "Lockfile found, a record is already planned:" >> $LOG
+	echo "Lockfile found, a record is already planned." >> $LOG
 	
 	echo -e "\nNext Recording :"
 	atq

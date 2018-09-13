@@ -17,5 +17,5 @@ if [ -n "$PID" ]; then
 		echo "Recording is already running !" >> $LOG
 		else
 		echo "Starting recording." >> $LOG
-		rtl_fm -f "145.800M" -l15 | sox -r24k -e unsigned -b16 -c1 -traw - $ROOTDIR/samples/$TIMESTAMP.wav
+		rtl_fm -f "145.800M" -l20 | sox -r24k -e unsigned -b16 -c1 -traw - $ROOTDIR/samples/$TIMESTAMP.wav&
 		fi
