@@ -11,22 +11,30 @@ if [ ! -f $ROOTDIR/iss_recorder.lock ]; then
 
 	UNIXTIME=$(echo $CURL | cut -d "," -f 8|cut -d " " -f 3)
 	DURATION=$(echo $CURL | cut -d "," -f 7|cut -d " " -f 6)
+	
+	if [ "$DURATION" = "" ]; then
+		echo "Setting duration to default value !" >> $LOG
+		DURATION="600"
+	fi
 
 	STARTUTC=$(date -d @$UNIXTIME +%H:%M)
 	START=$(date +%H:%M -d "$STARTUTC + 2 hours")
 	STOP=$(date +%H:%M -d "$STARTUTC + 2 hours + $DURATION second")
 
-	echo "Programming next ISS Passage : Duration: $DURATION Start: $START Stop: $STOP" >> $LOG
-	echo "Programming next ISS Passage : Duration: $DURATION Start: $START Stop: $STOP"
-#	START="1113"
-#	STOP="1114"
+	if [ -n "$START" ]; then
 
-	at $START -f $ROOTDIR/rtl_fm_start.sh >> $LOG
-	touch $ROOTDIR/iss_recorder.lock
-	at $STOP -f $ROOTDIR/rtl_fm_stop.sh >> $LOG
+		echo "Programming next ISS Passage : Duration: $DURATION Start: $START Stop: $STOP" >> $LOG
+		echo "Programming next ISS Passage : Duration: $DURATION Start: $START Stop: $STOP"
+
+		at $START -f $ROOTDIR/rtl_fm_start.sh >> $LOG
+		touch $ROOTDIR/iss_recorder.lock
+		at $STOP -f $ROOTDIR/rtl_fm_stop.sh >> $LOG
+	else
+		echo "Error reading values from API !" >> $LOG
+	fi
 
 else
-	echo "Lockfile found, a record is already planned." >> $LOG
+#	echo "Lockfile found, a record is already planned." >> $LOG
 	
 	echo -e "\nNext Recording :"
 	atq

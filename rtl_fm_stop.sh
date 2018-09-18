@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ROOTDIR="/root/iss_recorder/"
-TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+TIMESTAMP=$(date +%d-%m-%Y-%H-%M-%S)
 LOG="$ROOTDIR/iss_recorder.log"
 
 echo "Stop sampling on $TIMESTAMP" >> $LOG
